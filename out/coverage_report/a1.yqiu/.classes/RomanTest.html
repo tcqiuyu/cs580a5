@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RomanTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">a1.yqiu</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RomanTest (a1.yqiu)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RomanTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    73.6%
+  </span>
+  <span class="absValue">
+    (39/ 53)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package a1.yqiu;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.junit.After;
+<i>4</i>&nbsp;import org.junit.Before;
+<i>5</i>&nbsp;import org.junit.Test;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import static org.junit.Assert.assertEquals;
+<i>8</i>&nbsp;import static org.junit.Assert.assertTrue;
+<i>9</i>&nbsp;import static org.junit.Assert.fail;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * Created by Qiu on 1/20/16.
+<i>13</i>&nbsp; */
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;public class RomanTest {</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    private Roman roman;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @Before
+<i>20</i>&nbsp;    public void setUp() {
+<b class="fc"><i>21</i>&nbsp;        roman = new Roman();</b>
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    @After
+<i>25</i>&nbsp;    public void tearDown() {
+<b class="fc"><i>26</i>&nbsp;    }</b>
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    @Test
+<i>29</i>&nbsp;    public void testRomanToDecimal() throws InvalidNumberException {
+<b class="fc"><i>30</i>&nbsp;        assertEquals(578, roman.toDecimal(&quot;DLXXVIII&quot;));</b>
+<b class="fc"><i>31</i>&nbsp;        assertEquals(1984, roman.toDecimal(&quot;MCMLXXXIV&quot;));</b>
+<b class="fc"><i>32</i>&nbsp;        assertEquals(3999, roman.toDecimal(&quot;MMMCMXCIX&quot;));</b>
+<i>33</i>&nbsp;//        assertEquals(1, roman.toDecimal(null));
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;        assertEquals(1984, roman.toDecimal(&quot;mcmlxxxiv&quot;));</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;        boolean rule1;
+<i>38</i>&nbsp;        boolean rule2;
+<i>39</i>&nbsp;        boolean rule3;
+<i>40</i>&nbsp;        boolean rule4;
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;        try {
+<b class="fc"><i>43</i>&nbsp;            roman.toDecimal(&quot;IIII&quot;);</b>
+<b class="nc"><i>44</i>&nbsp;            rule1 = false;</b>
+<b class="fc"><i>45</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="fc"><i>46</i>&nbsp;            rule1 = true;</b>
+<b class="nc"><i>47</i>&nbsp;        }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;        try {
+<b class="fc"><i>50</i>&nbsp;            roman.toDecimal(&quot;IIIIV&quot;);</b>
+<b class="nc"><i>51</i>&nbsp;            rule1 = false;</b>
+<b class="fc"><i>52</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="fc"><i>53</i>&nbsp;            rule1 = true;</b>
+<b class="nc"><i>54</i>&nbsp;        }</b>
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;        try {
+<b class="fc"><i>57</i>&nbsp;            roman.toDecimal(&quot;XCX&quot;);</b>
+<b class="nc"><i>58</i>&nbsp;            rule2 = false;</b>
+<b class="fc"><i>59</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="fc"><i>60</i>&nbsp;            rule2 = true;</b>
+<b class="nc"><i>61</i>&nbsp;        }</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;        try {
+<b class="fc"><i>65</i>&nbsp;            roman.toDecimal(&quot;VX&quot;);</b>
+<b class="nc"><i>66</i>&nbsp;            rule3 = false;</b>
+<b class="fc"><i>67</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="fc"><i>68</i>&nbsp;            rule3 = true;</b>
+<b class="nc"><i>69</i>&nbsp;        }</b>
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;        try {
+<b class="fc"><i>72</i>&nbsp;            roman.toDecimal(&quot;IC&quot;);</b>
+<b class="nc"><i>73</i>&nbsp;            rule4 = false;</b>
+<b class="fc"><i>74</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="fc"><i>75</i>&nbsp;            rule4 = true;</b>
+<b class="nc"><i>76</i>&nbsp;        }</b>
+<i>77</i>&nbsp;
+<b class="fc"><i>78</i>&nbsp;        assertTrue(rule1);</b>
+<b class="fc"><i>79</i>&nbsp;        assertTrue(rule2);</b>
+<b class="fc"><i>80</i>&nbsp;        assertTrue(rule3);</b>
+<b class="fc"><i>81</i>&nbsp;        assertTrue(rule4);</b>
+<b class="fc"><i>82</i>&nbsp;    }</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    @Test
+<i>85</i>&nbsp;    public void testDecimalToRoman() throws InvalidNumberException {
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;        assertEquals(&quot;LXXXIV&quot;, roman.toRoman(84));</b>
+<b class="fc"><i>88</i>&nbsp;        assertEquals(&quot;MMDCCLI&quot;, roman.toRoman(2751));</b>
+<b class="fc"><i>89</i>&nbsp;        assertEquals(&quot;MCMLXXXIV&quot;, roman.toRoman(1984));</b>
+<b class="fc"><i>90</i>&nbsp;        assertEquals(&quot;MMMCMXCIX&quot;, roman.toRoman(3999));</b>
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;        try {
+<b class="fc"><i>93</i>&nbsp;            roman.toRoman(0);</b>
+<b class="nc"><i>94</i>&nbsp;            fail(&quot;Did not throw InvalidNumberException for input 0&quot;);</b>
+<b class="fc"><i>95</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="nc"><i>96</i>&nbsp;        }</b>
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;        try {
+<b class="fc"><i>99</i>&nbsp;            roman.toRoman(4000);</b>
+<b class="nc"><i>100</i>&nbsp;            fail(&quot;Did not throw InvalidNumberException for input 4000&quot;);</b>
+<b class="fc"><i>101</i>&nbsp;        } catch (InvalidNumberException e) {</b>
+<b class="nc"><i>102</i>&nbsp;        }</b>
+<b class="fc"><i>103</i>&nbsp;    }</b>
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;    @Test
+<i>106</i>&nbsp;    public void testToDecimal() throws Exception {
+<i>107</i>&nbsp;
+<b class="fc"><i>108</i>&nbsp;    }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    @Test
+<i>111</i>&nbsp;    public void testToRoman() throws Exception {
+<i>112</i>&nbsp;
+<b class="fc"><i>113</i>&nbsp;    }</b>
+<i>114</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2016-02-19 11:14</div>
+</div>
+</body>
+</html>
